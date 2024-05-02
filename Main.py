@@ -1,28 +1,19 @@
-import pygame
+from flask import Flask, jsonify, request
+import random
+import sys
 
-## Poker
-## Pygame
-## 1 deck game
-## play against Ai through class
+## a random game generator to help with gamer block
 
-pygame.init()
-screen = pygame.display.set_mode((1080, 720))
-clock = pygame.time.Clock()
-running = True
+app = Flask(__name__)
 
-while running:
-    # poll for events
-    # pygame.QUIT event means the user clicked X to close your window
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
+games = ["Minecraft", "Fortnite", "Apex Legends", "League of Legennds", "Call of Duty"]
 
-    # fill the screen with a color to wipe away anything from last frame
-    screen.fill("green")
 
-    # RENDER YOUR GAME HERE
+@app.route('/suggest', methods=['GET'])
+def suggest_game():
+    game = random.choice(games)
+    return jsonify({"suggested_game": game}, "Ethan")
 
-    # flip() the display to put your work on screen
-    pygame.display.flip()
-
-    clock.tick(60) ## Limits FPS to 60
+if __name__ == '__main__':
+    app.run(debug=True)
+                
