@@ -1,6 +1,3 @@
-from flask import Flask, jsonify, request
-import random
-import sys
 import requests
 import json
 import random
@@ -47,22 +44,3 @@ source_data()
 game = game_data(random_game, json_data[random_game]['name'], json_data[random_game]['developer'], json_data[random_game]['price'], json_data[random_game]['positive'], json_data[random_game]['score_rank'])
 print(game.get_name())
 print(game.get_developer())
-
-
-
-## a random game generator to help with gamer block
-
-app = Flask(__name__)
-
-# games = ["Minecraft", "Fortnite", "Apex Legends", "League of Legennds", "Call of Duty"]
-
-
-@app.route('/suggest', methods=['GET'])
-def suggest():
-    random_game = random.choice(list(json_data.keys()))
-    game = game_data(random_game, json_data[random_game]['name'], json_data[random_game]['developer'], json_data[random_game]['price'], json_data[random_game]['positive'], json_data[random_game]['score_rank'])
-    return jsonify({"game": game.get_name(), "developer": game.get_developer()})
-
-if __name__ == '__main__':
-    app.run(debug=True)
-                
