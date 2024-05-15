@@ -1,6 +1,42 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>>{% block title %}Game Generator{% endblock %}</title>
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Game Generator{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Optional: a light background color */
+        }
+        .centered-container {
+            text-align: center;
+        }
+        .game-image {
+            max-width: 300px; /* Adjust the max-width as needed */
+            max-height: 400px; /* Adjust the max-height as needed */
+            border: 5px solid #a16f6f; /* Optional: Customize border color */
+            border-radius: 10px; /* Optional: Round the corners */
+            margin-top: 20px; /* Optional: Adjust spacing */
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-container">
+        <h1 class="display-1">🤯</h1>
+        <h1 class="display-1">Gamer Block</h1>  
+        <h1>{{ game_name }}</h1>
+        <img src="{{ game_image }}" class="game-image">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
 </html>
