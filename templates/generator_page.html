@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- the display for how big the web app is also setting the url name and getting the reference sheet-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Game Generator{% endblock %}</title>
@@ -10,10 +11,10 @@
             height: 100%;
             margin: 0;
             display: flex;
-            justify-content: center;
+            justify-content: center;    /* Aligning all the text and formating how it looks*/
             align-items: center;
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0; /* Optional: a light background color */
+            background-color: #ffffff; /* Optional: a light background color */
         }
         .centered-container {
             text-align: center;
@@ -25,14 +26,24 @@
             border-radius: 10px; /* Optional: Round the corners */
             margin-top: 20px; /* Optional: Adjust spacing */
         }
+        .btn-primary {
+            background-color: #1ec5cb; /* Optional: Customize button color */
+            border-color: #1b128d; /* Optional: Customize button border color */
+
+        }
     </style>
 </head>
+<!-- This area to display all the headings and imges for the game-->
 <body>
-    <div class="centered-container">
-        <h1 class="display-1">🤯</h1>
+    <div class="centered-container"> <!-- using the style container above to format the displayed text-->   
+        <h1 class="display-1">🤯</h1>  
         <h1 class="display-1">Gamer Block</h1>  
-        <h1>{{ game_name }}</h1>
-        <img src="{{ game_image }}" class="game-image">
+        <h1>{{ game_name }}</h1>    <!--this line displays the game name-->
+        <img src="{{ game_image }}" class="game-image"> <!-- displays image using the url from the python file-->
+        <h2><a href="/generator_page" class="btn btn-primary">Generate Another Game</a></h2> 
+        <!-- button to generate another game-->
+        <p class="mt-3"><strong>Description:</strong> {{ game_description }}</p>
+        <!--this displays the descritption-->
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
