@@ -27,11 +27,12 @@ def fetch_game_description(appid):
     if response.status_code == 200: # Check if the response is successful
         data = response.json()      # Convert the response to a JSON object
         if data[str(appid)]['success']:  # checking if the request attained the information
-            return data[str(appid)]['data'].get('about_the_game', 'no description available') # Get the 'about_the_game' field from the data
+            required_description = data[str(appid)]['data'].get('about_the_game', 'No description available.')
+            return required_description# Get the 'about_the_game' field from the data
     return 'No description available.' # Return this message if the request was unsuccessful
 
 def fetch_game_trailer(data, appid):
-    trailers = data[str(appid)]['data'].get('movies', [])
+    trailers = data[str(appid)]['data'].get('movies')
     if trailers:
         for trailer in trailers:
             trailer_url = trailer.get('webm', {}).get('max', '')  # Ensure the URL is correctly accessed

@@ -43,6 +43,13 @@
         <h2><a href="/generator_page" class="btn btn-primary">Generate Another Game</a></h2> 
         <!-- button to generate another game-->
         <p class="mt-3"><strong>Description:</strong> {{ game_description }}</p>
+        {% if game_trailer %}
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="{{ game_trailer }}" allowfullscreen></iframe>
+            </div>
+        {% else %}
+            <p>No trailer available.</p>
+        {% endif %}
         <!--this displays the descritption-->
     </div>
 
