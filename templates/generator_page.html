@@ -31,6 +31,32 @@
             border-color: #1b128d; /* Optional: Customize button border color */
 
         }
+
+       
+        .centered-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .video-container {
+            display: inline-block;
+            max-width: 320px; /* Max width of the video */
+            margin: 20px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .small-video {
+            width: 10px;
+            height: 18px;
+        }
+
+        .video-container button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <!-- This area to display all the headings and imges for the game-->
@@ -51,6 +77,20 @@
             <p>No trailer available.</p>
         {% endif %}
         <!--this displays the descritption-->
+        <script>
+            function toggleFullScreen() {
+                var video = document.getElementById("game-trailer");
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) { // Firefox
+                    video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) { // IE/Edge
+                    video.msRequestFullscreen();
+                }
+            }
+            </script>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
