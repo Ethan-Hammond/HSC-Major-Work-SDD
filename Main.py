@@ -5,8 +5,8 @@ import json
 import random
 from flask import redirect, url_for
 from bs4 import BeautifulSoup
-
-
+import re
+# https://api.steampowered.com/ISteamApps/GetAppList/v2/
 main = Blueprint('main', __name__)
 
 def source_data():
@@ -21,13 +21,14 @@ def source_data():
 
 
 def fetch_game_description(appid):
-    global data
+    global data, required_description
     url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
     response = requests.get(url)  # Send a GET request to the URL
     if response.status_code == 200: # Check if the response is successful
         data = response.json()      # Convert the response to a JSON object
         if data[str(appid)]['success']:  # checking if the request attained the information
-            return data[str(appid)]['data'].get('about_the_game', 'no description available') # Get the 'about_the_game' field from the data
+            required_description = data[str(appid)]['data'].get('detailed_description', 'no description available') # Get the 'about_the_game' field from the data
+            return required_description
     return 'No description available.' # Return this message if the request was unsuccessful
 
 def fetch_game_trailer(data, appid):
@@ -41,8 +42,11 @@ def fetch_game_trailer(data, appid):
                 return trailer_url
     return ""
 
-
+def remove_html_tags(required_description):
+    clean = re. compile('<. *?> ')
+    return re.sub(clean, '', required_description)
     
+
 ## class to store the data of the game
 class game_data:
     def __init__(self, appid, name, developer, description, trailer ):
@@ -125,6 +129,8 @@ def game_suggest():
     game = game_data(appid, json_data[random_game]['name'], json_data[random_game]['developer'], description, trailer )
     game_name = game.get_name()
     game_image = search_game_image(game_name)
+    text = remove_html_tags(required_description)
+    print(text)   
     
     print(game_image)
     return render_template('generator_page.html', game_name=game_name, game_image=game_image, game_description=game.get_description(), game_trailer=game.get_trailer())
