@@ -11,15 +11,16 @@ main = Blueprint('main', __name__)
 
 def source_data():
     global random_game, json_data
-    x = requests.get('https://steamspy.com/api.php?request=all')
+    x = requests.get('https://steamspy.com/api.php?request=all') # getting the data from the api
     print(type(x.text))
-    json_data = json.loads(x.text)
+    json_data = json.loads(x.text) # converting the data to json
     ## creating dictonaries for the data inside of one big dictionary using
     ##json data to easily manuver through the data
     random_game = random.choice(list(json_data.keys()))
 
-
-
+def fetch_developer(data):
+    developer = data[str(appid)].get('developers', 'No developer information available.') # Get the 'developers' field from the data
+    return developer
 def fetch_game_description(appid):
     global data, required_description
     url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
@@ -42,9 +43,6 @@ def fetch_game_trailer(data, appid):
                 return trailer_url
     return ""
 
-def remove_html_tags(required_description):
-    clean = re. compile('<. *?> ')
-    return re.sub(clean, '', required_description)
     
 
 ## class to store the data of the game
@@ -75,7 +73,6 @@ class game_data:
 source_data()
 
 
-# print(game.get_developer())
 
 
 
@@ -86,13 +83,13 @@ from bs4 import BeautifulSoup
  
 def search_game_image(game_name):
     query = game_name + " game box art"
-    url = f"https://www.bing.com/images/search?q={query}&form=QBLH"
- 
+    url = f"https://www.bing.com/images/search?q={query}&form=QBLH"  # Bing Image Search URL
+    
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
     }
  
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers) # Send a GET request to the URL
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
         # Find the first image result
@@ -101,7 +98,7 @@ def search_game_image(game_name):
             first_image_data = image_results[0]['m']
             # The 'm' attribute contains JSON-like data; we need to extract the image URL
             first_image_url = first_image_data.split('"murl":"')[1].split('","')[0]
-            #print(f'Image URL: {first_image_url}')
+            
         else:
             print('No image found.')
     else:
@@ -120,19 +117,20 @@ def home_page():
     return render_template('base.html')
 
 @app.route('/generator_page', methods=['GET'])
-def game_suggest():
+def game_suggest(): 
     global appid
-    random_game = random.choice(list(json_data.keys()))
-    appid = random_game
+    random_game = random.choice(list(json_data.keys())) 
+    appid = random_game  # appending all the information to the game and creating the object for it
     description = fetch_game_description(appid)
     trailer = fetch_game_trailer(data, appid)
-    game = game_data(appid, json_data[random_game]['name'], json_data[random_game]['developer'], description, trailer )
+    developer = fetch_developer(data)
+    game = game_data(appid, json_data[random_game]['name'], developer, description, trailer )
     game_name = game.get_name()
     game_image = search_game_image(game_name)
-    text = remove_html_tags(required_description)
-    print(text)   
+   
     
     print(game_image)
+    # rendering the game page with the information
     return render_template('generator_page.html', game_name=game_name, game_image=game_image, game_description=game.get_description(), game_trailer=game.get_trailer())
 @app.route('/save_game', methods=['POST'])
 def save_game():
