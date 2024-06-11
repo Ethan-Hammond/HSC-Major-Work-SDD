@@ -19,3 +19,15 @@ def fetch_steam_genres():
 genres = fetch_steam_genres()
 for genre, genre_id in genres.items():  # Loop through the genres and print them
     print(f"{genre}: {genre_id}")
+
+
+def search_genre(genres):
+    search_term = input("Enter the genre name: ")
+    genre_id = genres.get(search_term)  # Get the genre ID from the dictionary
+    print (genre_id)
+    url = f"https://store.steampowered.com/search/?tags={genre_id}"
+    response = requests.get(url)  # Send a GET request to the URL
+    response.raise_for_status()  # Ensure the response is successful
+    json_data = response.json()  # Convert the response to a JSON object
+    return json_data
+search_genre(genres)  # Search for the 'Action' genre
