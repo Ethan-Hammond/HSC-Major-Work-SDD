@@ -21,6 +21,7 @@ def source_data():
 def fetch_developer(data):
     developer = data[str(appid)].get('developers', 'No developer information available.') # Get the 'developers' field from the data
     return developer
+
 def fetch_game_description(appid):
     global data, required_description
     url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
