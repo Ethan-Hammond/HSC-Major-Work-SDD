@@ -72,8 +72,6 @@ class game_data:
 source_data()
 
 
-# print(game.get_developer())
-
 
 
 ## a random game generator to help with gamer block
