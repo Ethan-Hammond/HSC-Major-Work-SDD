@@ -24,4 +24,4 @@ Source for information can be found through the URLs below:
 - https://store.steampowered.com/api/appdetails?appids=%7Bappid%7D - used for trailer, ingame screenshots, description, and available platforms
 - also used bing for box art image
   
- 
+ Author Ethan Hammond, Contact me at ethan.hammon1029@gmail.com
