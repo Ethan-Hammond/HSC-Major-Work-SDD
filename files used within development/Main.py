@@ -6,7 +6,6 @@ import random
 from flask import redirect, url_for
 from bs4 import BeautifulSoup
 import re
-# https://api.steampowered.com/ISteamApps/GetAppList/v2/
 main = Blueprint('main', __name__)
 
 def source_data():
@@ -21,6 +20,8 @@ def source_data():
 def fetch_developer(data):
     developer = data[str(appid)].get('developers', 'No developer information available.') # Get the 'developers' field from the data
     return developer
+
+
 def fetch_game_description(appid):
     global data, required_description
     url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
@@ -33,7 +34,7 @@ def fetch_game_description(appid):
     return 'No description available.' # Return this message if the request was unsuccessful
 
 def fetch_game_trailer(data, appid):
-    trailers = data[str(appid)]['data'].get('movies', [])
+    trailers = data[str(appid)]['data'].get('movies', []) # Get the 'movies' field from the data
     if trailers:
         for trailer in trailers:
             trailer_url = trailer.get('webm', {}).get('max', '')  # Ensure the URL is correctly accessed
@@ -97,7 +98,7 @@ def search_game_image(game_name):
         if image_results:
             first_image_data = image_results[0]['m']
             # The 'm' attribute contains JSON-like data; we need to extract the image URL
-            first_image_url = first_image_data.split('"murl":"')[1].split('","')[0]
+            first_image_url = first_image_data.split('"murl":"')[1].split('","')[0] 
             
         else:
             print('No image found.')
