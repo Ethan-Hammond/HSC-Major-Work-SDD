@@ -24,7 +24,7 @@ def fetch_developer(data):
 def fetch_game_description(appid):
     global data, required_description
     url = f'https://store.steampowered.com/api/appdetails?appids={appid}'
-    response = requests.get(url)  # Send a GET request to the URL
+    response = requests.get(url) #  Send a GET request to the URL
     if response.status_code == 200: # Check if the response is successful
         data = response.json()      # Convert the response to a JSON object
         if data[str(appid)]['success']:  # checking if the request attained the information

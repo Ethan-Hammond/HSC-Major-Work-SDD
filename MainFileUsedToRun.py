@@ -9,7 +9,9 @@ app = Flask(__name__)
 def source_data():
     global random_game, json_data, appid
     x = requests.get('https://steamspy.com/api.php?request=all')
-    json_data = json.loads(x.text)
+    json_data = json.loads(x.text) # converting the data to json
+    ## creating dictonaries for the data inside of one big dictionary using
+    ##json data to easily manuver through the data
     random_game = random.choice(list(json_data.keys()))
     
 
@@ -20,11 +22,11 @@ def fetch_game_trailer(appid):
         trailer_url = ""
         if trailers:
             trailer = trailers[0]
-            trailer_url = trailer.get('webm', {}).get('max', '') or trailer.get('mp4', {}).get('max', '')
+            trailer_url = trailer.get('webm', {}).get('max', '') or trailer.get('mp4', {}).get('max', '') # Ensure the URL is correctly accessed
 
 
             return trailer_url
-        return 'Unknown Game', 'No description available.', ''
+        return 'Unknown Game', 'No trailer available.', ''
 
 
 
@@ -44,14 +46,14 @@ def fetch_game_description(appid):
 
 
 def search_game_image(game_name):
-    query = game_name + " game box art"
-    url = f"https://www.bing.com/images/search?q={query}&form=QBLH" 
+    query = game_name + " game box art" # Append 'game box art' to the game name to get relevant images
+    url = f"https://www.bing.com/images/search?q={query}&form=QBLH"  # Bing Image Search URL
     # set the headers to avoid being blocked
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
     } 
     response = requests.get(url, headers=headers)
-    if response.status_code == 200:
+    if response.status_code == 200: # Check if the response is successful
         soup = BeautifulSoup(response.text, 'html.parser')
         # Find the first image result
         image_results = soup.find_all('a', class_='iusc')
@@ -63,26 +65,29 @@ def search_game_image(game_name):
     return ""
 
 def find_platforms(appid):
-    platforms = data[str(appid)]['data'].get('platforms', {})
-    x = 0
-    while x < len(platforms):
-        if platforms[list(platforms.keys())[x]] == True:
-            return list(platforms.keys())
-        x += 1
-def find_price(appid):
-    price = data[str(appid)]['data'].get('final_formatted', {})
-    
-    return price
+    platforms = data[str(appid)]['data'].get('platforms', {}) # Get the 'platforms' field from the data
+    supported_platforms = [] # Create an empty list to store the supported platforms 
+    for platform, is_supported in platforms.items():
+        if is_supported: # Check if the platform is supported
+            supported_platforms.append(platform) # Return the supported platforms
+    return ', '.join(supported_platforms)
 
+def ingame_images(appid):
+    images = data[str(appid)]['data'].get('screenshots', []) # Get the 'screenshots' field from the data
+    image_urls = [] # Create an empty list to store the image URLs
+    for image in images:
+        image_url = image.get('path_thumbnail', '') # Get the 'path_thumbnail' attribute of the image
+        if image_url: # Check if the URL is not empty
+            image_urls.append(image_url) # Add the URL to the list
+    return image_urls
 class game_data:
-    def __init__(self, appid, name, developer, description, trailer, platforms, price ):
+    def __init__(self, appid, name, developer, description, trailer, platforms ):
         self.appid = appid
         self.name = name
         self.developer = developer
         self.description = description
         self.trailer = trailer
         self.platforms = platforms
-        self.price = price
     def get_name(self):
         return self.name    # returns the name of the game
     def get_data(self):
@@ -91,10 +96,6 @@ class game_data:
         return self.developer   # returns the developer of the game
     def get_genre(self):
         return self.genre  # returns the genre of the game
-    def get_price(self):
-        return self.price  # returns the price of the game
-    def get_rating(self):
-        return self.rating  # returns the rating of the game
     def get_description(self):
         return self.description
     def get_trailer(self):
@@ -103,7 +104,7 @@ class game_data:
         return self.platforms
     
 
-
+# The main route of the application that renders the index.html template and passes the game data into a class object to be displayed
 @app.route('/')
 def index():
     global appid
@@ -112,11 +113,12 @@ def index():
     description = fetch_game_description(appid)
     trailer = fetch_game_trailer(appid)
     platforms = find_platforms(appid)
-    game = game_data(appid, json_data[random_game]['name'], json_data[random_game]['developer'], description, trailer, platforms, price )
+    game = game_data(appid, json_data[random_game]['name'], json_data[random_game]['developer'], description, trailer, platforms) 
     game_name = game.get_name()
+    game_developer = game.get_developer()
     game_image = search_game_image(game_name)
-    price = find_price(appid)
-    return render_template('index.html', game_description=game.get_description(), game_name=game_name, game_image=game_image, game_trailer=game.get_trailer(), platforms=game.get_platforms(), price=game.get_price())  
+    game_ingame_images = ingame_images(appid)
+    return render_template('index.html', game_ingame_images=game_ingame_images, game_description=game.get_description(), game_name=game_name, game_developer=game_developer, game_image=game_image, game_trailer=game.get_trailer(), platforms=game.get_platforms())  
 
 if __name__ == '__main__':
     app.run(debug=True)

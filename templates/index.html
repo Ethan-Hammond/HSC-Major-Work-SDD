@@ -57,6 +57,13 @@
         background-color: #1ec5cb;
         border-color: #1b128d;
       }
+      .carousel-item img {
+            max-width: 100%;
+            height: auto;
+        }
+        .carousel-control-prev, .carousel-control-next {
+            width: auto;
+        }
       .description {
         font-family: "Helvetica", sans-serif;
         font-size: 16px;
@@ -69,10 +76,13 @@
   <body>
     <div class="container-wrapper">
       <div class="centered-container">
-        <h1 class="display-1">🤯</h1>
-        <h1 class="display-1">Gamer Block</h1>
-        <h1>{{ game_name }}</h1>
-        <h2><a href="/" class="btn btn-primary">Generate Another Game</a></h2>
+        <h1 class="display-1">Gamers Gateway</h1>
+        <h1><a href="/" class="btn btn-primary">Generate Another Game</a></h1>
+        <h1>{{ game_name }} - {{ game_developer }}</h1>
+        <p class="mt-3">
+          <strong>Available platforms:</strong> {{ platforms }}
+        </p>
+        
 
         <div class="media-container">
           <img src="{{ game_image }}" class="game-image" />
@@ -81,9 +91,24 @@
             <iframe src="{{ game_trailer }}" allowfullscreen></iframe>
           </div>
           {% endif %}
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                {% for image in game_ingame_images %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <img src="{{ image }}" class="d-block w-100" alt="In-game Screenshot">
+                    </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
           <p class="mt-3">
-            <strong>Price:</strong> {{ price }}
-            <strong>Available platforms:</strong> {{ platforms }}
         </div>
 
         <button

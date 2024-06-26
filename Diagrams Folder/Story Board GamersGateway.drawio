@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net" modified="2024-06-26T03:58:23.866Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="Ng65dvu-7AE5JEjVd6vu" version="24.6.3" type="device">
+  <diagram id="UqVhCwuL2qdCLJgCUi1_" name="Page-1">
+    <mxGraphModel dx="1034" dy="458" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-1" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#00CC00;rounded=1;shadow=1;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="250" y="370" width="450" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-2" value="Cover page image" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FF9999;glass=1;rounded=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="290" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-3" value="GamersGateway" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="445" y="370" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-4" value="Gane name&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="460" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-5" value="developer" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="410" y="480" width="60" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-8" value="Trailer" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFFFCC;rounded=1;glass=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="374" y="520" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-9" value="Platforms&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Price&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="454" y="530" width="76" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-11" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0000CC;glass=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="349" y="780" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-12" value="" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="434" y="785" width="100" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-13" value="Image slide" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCFFFF;shadow=1;glass=1;" parent="1" vertex="1">
+          <mxGeometry x="424" y="710" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="STi5Y7eJFXpJAKB7bYhM-15" target="VPOq7v7jwLzqMrv7rjoe-5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="964" y="435" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="STi5Y7eJFXpJAKB7bYhM-15" value="Generate game button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB570;glass=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="354" y="420" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-2" value="Show/Hide description" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="409" y="620" width="132" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-5" value="" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#00CC00;rounded=1;shadow=1;glass=0;" parent="1" vertex="1">
+          <mxGeometry x="1060.75" y="370" width="450" height="450" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-6" value="Gamers Gateway" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1241" y="370" width="79" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-7" value="E.G Dota 2&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1241" y="470" width="89.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-8" value="Valve" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1230.75" y="490" width="99.5" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-10" value="Generate game button" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFB570;glass=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1160" y="440" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-12" value="Dota 2 Trailer" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FFFFCC;rounded=1;glass=0;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1201" y="540" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-13" value="Cover page image" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#FF9999;glass=1;rounded=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1121" y="540" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-14" value="&lt;b&gt;Platforms&lt;/b&gt;&amp;nbsp;&lt;div&gt;Windows&lt;/div&gt;&lt;div&gt;Mac&lt;/div&gt;&lt;div&gt;Linux&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="1281" y="545" width="79" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-17" value="&lt;b&gt;Price&lt;/b&gt;: Free" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+          <mxGeometry x="1271" y="585" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-19" value="Show/Hide description" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1204" y="630" width="132" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-20" value="Image slide" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#CCFFFF;shadow=1;glass=1;" parent="1" vertex="1">
+          <mxGeometry x="1210" y="690" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-21" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0000CC;glass=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1130" y="775" width="270" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="VPOq7v7jwLzqMrv7rjoe-22" value="" style="ellipse;whiteSpace=wrap;html=1;shadow=1;" parent="1" vertex="1">
+          <mxGeometry x="1215" y="780" width="100" height="10" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
